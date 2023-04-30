@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 
 
-// Create new comment
+
 router.post('/', async (req, res) => {
   try {
     const dbPostData = await Post.create({
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 });
 
 
-// Update existing post
+
 router.put('/:id', async (req, res) => {
   try {
     const dbPostData = await Post.update({
@@ -38,7 +38,7 @@ router.put('/:id', async (req, res) => {
 });
 
 
-// Delete post
+
 router.delete('/:id', async (req, res) => {
   try {
   const dbPostData = await Post.destroy({

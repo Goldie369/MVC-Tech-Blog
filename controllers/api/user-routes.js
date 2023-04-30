@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 
-// Create new user
+
 router.post('/', async (req, res) => {
   try {
     const dbUserData = await User.create({
@@ -11,8 +11,8 @@ router.post('/', async (req, res) => {
     });
     const userId = dbUserData.get({ plain: true }).id;
     req.session.save(() => {
-      req.session.loggedIn = true; // Add this to Session object (will be used to render pages)
-      req.session.user_id = userId; // Add this to Session object (will be used to render pages)
+      req.session.loggedIn = true; 
+      req.session.user_id = userId; 
       res.status(200).json(dbUserData);
     });
   } catch (err) {
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
 });
 
 
-// Login
+
 router.post('/login', async (req, res) => {
   try {
     const dbUserData = await User.findOne({
@@ -41,8 +41,8 @@ router.post('/login', async (req, res) => {
     }
     const userId = dbUserData.get({ plain: true }).id;
     req.session.save(() => {
-      req.session.loggedIn = true; // Add this to Session object (will be used to render pages)
-      req.session.user_id = userId; // Add this to Session object (will be used to render pages)
+      req.session.loggedIn = true; 
+      req.session.user_id = userId; 
       res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
     });
   } catch (err) {
@@ -52,7 +52,7 @@ router.post('/login', async (req, res) => {
 });
 
 
-// Logout
+
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
