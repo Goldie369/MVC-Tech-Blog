@@ -1,10 +1,10 @@
-// Import middlewares and models
+
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
-const withAuth = require('../utils/auth'); // Custom middleware for authentification
+const withAuth = require('../utils/auth'); 
 
 
-// GET for homepage ('/')
+
 router.get('/', async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 });
 
 
-// GET for posts page ('/post/:id')
+
 router.get('/post/:id', async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.params.id, {
@@ -42,8 +42,8 @@ router.get('/post/:id', async (req, res) => {
 });
 
 
-// GET for dashboard page ('/dashboard')
-router.get('/dashboard', withAuth, async (req, res) => { // withAuth: only if user is logged in, the callback function is executed
+
+router.get('/dashboard', withAuth, async (req, res) => { 
   try {
     const dbPostData = await Post.findAll({
       include: [{
@@ -63,14 +63,14 @@ router.get('/dashboard', withAuth, async (req, res) => { // withAuth: only if us
 });
 
 
-// GET for add new post page ('/dashboard/newpost')
-router.get('/dashboard/newpost', withAuth, (req, res) => { // withAuth: only if user is logged in, the callback function is executed
+
+router.get('/dashboard/newpost', withAuth, (req, res) => { 
   res.render('newpost', { loggedIn: req.session.loggedIn });
 });
 
 
-// GET for edit/delete post page ('/dashboard/post/:id')
-router.get('/dashboard/post/:id', withAuth, async (req, res) => {  // withAuth: only if user is logged in, the callback function is executed
+
+router.get('/dashboard/post/:id', withAuth, async (req, res) => {  
   try {
     const dbPostData = await Post.findByPk(req.params.id, {});
     const post = dbPostData.get({ plain: true });
@@ -82,13 +82,13 @@ router.get('/dashboard/post/:id', withAuth, async (req, res) => {  // withAuth: 
 });
 
 
-// GET for signup page ('/signup')
+
 router.get('/signup', (req, res) => {
   res.render('signup', { loggedIn: req.session.loggedIn });
 });
 
 
-// GET for login page ('/login')
+
 router.get('/login', (req, res) => {
   res.render('login', { loggedIn: req.session.loggedIn });
 });
