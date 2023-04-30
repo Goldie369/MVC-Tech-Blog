@@ -1,20 +1,24 @@
-// Import libraries
+//-- Adding a liberies--//
+//--The path module provides utilities for working with file and directory paths--//
+//-- The express module is a Node.js web application framework that provides a set of features for building web applications--//
+//-- The session module is an Express.js middleware that provides session management functionality--//
+
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// Import from other file/folders
+
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 
-// Set up Express
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Set up Express-Session
+
 const sess = {
   secret: 'Super secret secret',
   cookie: {},
@@ -25,7 +29,7 @@ const sess = {
   }),
 };
 
-// Set up Express middlewares
+
 app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
@@ -39,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-// Sync with MySQL using Sequelize
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
