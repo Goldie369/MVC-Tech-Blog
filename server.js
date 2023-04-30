@@ -24,6 +24,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 //-- Adding an object sess is defined with session configuration options--//
+//-- The secret option is used to sign the session ID cookie--//
+//-- The cookie option is an object that sets additional cookie options--//
+//-- The saveUninitialized option forces an uninitialized session to be saved to the session store--//
 
 const sess = {
   secret: 'Super secret secret',
@@ -35,6 +38,13 @@ const sess = {
   }),
 };
 
+//-- app.use(session(sess));: This line sets up a middleware function to enable session management in the application--//
+//--  It uses the session module, which provides a way to store user-specific data on the server--//
+//-- const hbs = exphbs.create({ helpers });: This line creates an instance of the Handlebars view engine, which allows you to render dynamic HTML templates--//
+//-- app.engine('handlebars', hbs.engine);: This line sets the view engine for the application to Handlebars--//
+//-- app.set('view engine', 'handlebars');: This line specifies that the default file extension for views will be .handlebars--//
+//-- app.use(express.json());: This line sets up a middleware function to parse incoming requests with JSON--//
+//-- app.use(express.urlencoded({ extended: true }));: This line sets up a middleware function to parse incoming requests with URL--//
 
 app.use(session(sess));
 
