@@ -9,15 +9,21 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+//-- Adding routes and database connections--//
+//-- routes: A module that exports the routes of the application as an Express.js router--//
+//-- sequelize: A module that exports a Sequelize instance configured to connect to a database--//
+//-- helpers: A module that exports helper functions that can be used in the views of the application--//
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 
+//-- Adding express module is created and assigned to the app variable--//
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//-- Adding an object sess is defined with session configuration options--//
 
 const sess = {
   secret: 'Super secret secret',
