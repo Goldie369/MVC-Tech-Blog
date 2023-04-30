@@ -1,3 +1,8 @@
+//-- The code retrieves the post_id from the current URL by splitting the URL at each / character and taking the last item in the resulting array--//
+//-- The code defines an asynchronous function updatepostFormHandler that is called when the user submits a form to update a post--//
+//-- The function first prevents the default form submission behavior with event.preventDefault().--//
+
+
 
 const post_id = window.location.toString().split('/')[
  window.location.toString().split('/').length - 1];
@@ -15,7 +20,7 @@ const updatepostFormHandler = async (event) => {
       body: JSON.stringify({ title, content }),
       headers: { 'Content-Type': 'application/json' },
     });
-
+//-- the function redirects the user to the dashboard page (/dashboard) using document.location.replace--//
     if (response.ok) {
       document.location.replace('/dashboard'); 
     } else {
@@ -25,7 +30,8 @@ const updatepostFormHandler = async (event) => {
 };
 
 
-
+//-- defines an asynchronous function deletepostFormHandler that is called when the user submits a form to delete a post--//
+//-- The function first prevents the default form submission behavior with event.preventDefault().--//
 const deletepostFormHandler = async (event) => {
   event.preventDefault();
 
@@ -41,7 +47,7 @@ const deletepostFormHandler = async (event) => {
 };
 
 
-
+//-- the code sets up event listeners on the update post form and delete post form elements that call the updatepostFormHandler and deletepostFormHandler functions respectively when the forms are submitted--//
 document
   .querySelector('.updatepost-form')
   .addEventListener('submit', updatepostFormHandler);
