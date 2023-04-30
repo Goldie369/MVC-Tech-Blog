@@ -16,15 +16,15 @@ const newcommentFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.reload(); // When successful, reload the same page
+      document.location.reload(); 
     } else {
-      alert('Failed to create a comment.'); // When unsuccessful, show alert
+      alert('Failed to create a comment.');
     }
   }
 };
 
 
-// Event listeners
+
 document
   .querySelector('.newcomment-form')
   .addEventListener('submit', newcommentFormHandler);

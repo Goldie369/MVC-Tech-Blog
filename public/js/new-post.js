@@ -1,4 +1,4 @@
-// Create new post
+
 const newpostFormHandler = async (event) => {
   event.preventDefault();
 
@@ -13,15 +13,15 @@ const newpostFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard'); // When successful, load the dashboard page
+      document.location.replace('/dashboard'); 
     } else {
-      alert('Failed to create a new post.'); // When unsuccessful, show alert
+      alert('Failed to create a new post.'); 
     }
   }
 };
 
 
-// Event listeners
+
 document
   .querySelector('.newpost-form')
   .addEventListener('submit', newpostFormHandler);
