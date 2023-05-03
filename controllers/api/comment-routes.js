@@ -1,7 +1,11 @@
+
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
-
+//-- Inside the route handler function, it creates a new comment using the Comment.create() method and passes in an object with three properties--//
+//-- content--//
+//-- post_id--//
+//-- user_id--//
 
 router.post('/', async (req, res) => {
   try {
