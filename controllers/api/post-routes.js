@@ -2,6 +2,13 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 
 
+//-- The first route defines a handler for creating a new post using a HTTP POST request sent to the server at the path '/'--//
+//-- Adding a oute handler function, it creates a new post using the Post.create() method--//
+//-- title--//
+//-- content--//
+//--user_id--//
+//--The second route defines a handler for updating an existing post using a HTTP PUT request--//
+//-- The third route defines a handler for deleting an existing post using a HTTP DELETE request--//
 
 router.post('/', async (req, res) => {
   try {
