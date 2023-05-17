@@ -84,6 +84,7 @@ router.get('/dashboard/post/:id', withAuth, async (req, res) => {
 
 
 router.get('/signup', (req, res) => {
+  console.log()
   res.render('signup', { loggedIn: req.session.loggedIn });
 });
 
