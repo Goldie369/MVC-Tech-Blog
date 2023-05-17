@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is a CMS-style blog designed for developers and those interested in tech to share knowledge, publish thought pieces and opinions, and leave comments on other users' posts.
+This application is a blog designed for developers and those interested in tech to share knowledge, publish thought pieces and opinions, and leave comments on other users' posts.
 
 ### App functionality
 
